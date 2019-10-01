@@ -15,6 +15,8 @@ def test_words_with_capital_letters():
     assert word_count('My name is Jill and my home is in Boston') == {'my': 2, 'name': 1, 'is': 2, 'Jill': 1, 'and': 1, 'home': 1, 'in': 1, 'Boston': 1}
     # counter == count_each_phrase
 
+def test_phrase_with_punctuation():
+    assert word_count('My name is Jill and my home is in Boston!') == {'my': 2, 'name': 1, 'is': 2, 'Jill': 1, 'and': 1, 'home': 1, 'in': 1, 'Boston': 1}
 
 
 
