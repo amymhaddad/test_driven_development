@@ -23,6 +23,10 @@ def test_empty_phrase():
 def test_phase_with_numbers():
     assert word_count('I am 12 years old.') == {'i': 1, 'am': 1, 'years': 1, 'old': 1}
 
+def test_words_with_apostrophes():
+    assert word_count("I'm going to move to Florida.") == {'im': 1, 'going': 1, 'to': 2, 'move': 1, 'florida': 1}
+
+
 
 
 # def test_count_single_word():
