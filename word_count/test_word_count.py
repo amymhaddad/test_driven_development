@@ -14,8 +14,14 @@ def test_repeated_words_separated_by_single_space():
 def test_words_with_capital_letters():
     assert word_count('My name is Jill and my home is in Boston') == {'my': 2, 'name': 1, 'is': 2, 'jill': 1, 'and': 1, 'home': 1, 'in': 1, 'boston': 1}
 
-def test_phrase_with_punctuation():
+def test_words_with_punctuation():
     assert word_count('My name is Jill and my home is in Boston!') == {'my': 2, 'name': 1, 'is': 2, 'jill': 1, 'and': 1, 'home': 1, 'in': 1, 'boston': 1}
+
+def test_empty_phrase():
+    assert word_count("") == {"": 1}
+
+def test_phase_with_numbers():
+    assert word_count('I am 12 years old.') == {'i': 1, 'am': 1, 'years': 1, 'old': 1}
 
 
 
