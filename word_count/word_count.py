@@ -1,26 +1,30 @@
 from string import punctuation, digits
 
+
 def word_count(phrase):
+    """Count the words in a given phrase"""
 
     phrase = validate_phrase(phrase)
-
-    counter = 0
     word_count_dictionary = {}
 
-    for word in phrase.split(" "):       
+    if len(phrase) < 1:
+        return 0
 
+    for word in phrase.split(" "):
         word_count_dictionary[word] = word_count_dictionary.get(word, 0) + 1
-        if word == '' and len(phrase) > 1:
-            del word_count_dictionary[word]             
+        if word == "":
+            del word_count_dictionary[word]
     return word_count_dictionary
 
 
 def validate_phrase(phrase):
-    """Remove punctuation and lowercase all words"""
+    """Remove punctuation and digits; lowercase all words"""
 
-    updated_phrase = ''
+    updated_phrase = ""
     for words in phrase.lower():
         if words in punctuation:
+            if words == "-":
+                words.replace("-", "")
             updated_phrase += words.strip(punctuation)
         elif words in digits:
             continue
@@ -28,8 +32,3 @@ def validate_phrase(phrase):
             updated_phrase += words
 
     return updated_phrase
-   
-print(word_count(phrase))
-
-# print(validate_phrase(phrase))
-
