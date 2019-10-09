@@ -12,3 +12,10 @@ def test_isbn_without_hyphens():
     number = '3598215088'
     assert isbn(number) == True 
 
+def test_isbn_ends_with_x():
+    number = '359821507X'
+    assert isbn(number) == True
+
+
+#check for dashses or not dashes
+#check ends with number
