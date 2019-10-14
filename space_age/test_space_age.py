@@ -9,3 +9,13 @@ def test_earth_years():
     age = SpaceAge(seconds)
 
     assert age.earth_age() == 31.69
+
+def test_age_on_mercury():
+
+    seconds = 2134835688
+    age = SpaceAge(seconds)
+    assert age.on_mercury() ==  280.88
+
+
+#   def test_age_on_mercury(self):
+#         self.assertEqual(SpaceAge(2134835688).on_mercury(), 280.88)
