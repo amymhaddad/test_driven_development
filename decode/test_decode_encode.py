@@ -34,4 +34,9 @@ def test_decode_string_multiple_same_letters_with_single_unique_letter():
 def test_decode_string_multiple_same_letters_and_multiple_single_unique_letters():
     return decode("3WB3WC2B") == "WWWBWWWCBB"
 
+def test_encode_string_with_spaces():
+    return encode("W W W") == "3W"
+
+def test_encode_string_with_lowercase_letters():
+    return encode("www") == "3W"
 
