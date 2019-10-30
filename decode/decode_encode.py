@@ -2,14 +2,23 @@ from string import digits
 
 
 
-#some of my tests will pass but they shouldn't
+#tests passing automatically
 
 
-#fix encode() so it if gets ONLY the same values, it returns the proper count --> WWW == 3W
+
+def valid_string(string):
+    new_string = ''
+    for character in string.split(" "):
+        if character.isalpha():
+            new_string += character.upper()
+        else:
+            new_string += character
+    return new_string
+
 
 def encode(string):
   
-    # string = valid_string(string)
+    string = valid_string(string)
 
     duplicate_letter = ''
     letter_count = []
@@ -19,8 +28,7 @@ def encode(string):
         if duplicate_letter == '' or letter in duplicate_letter:
             duplicate_letter += letter
         
-        if letter not in duplicate_letter:
-            # import pdb; pdb.set_trace()
+        else:
             letter_count += str(len(duplicate_letter)) + duplicate_letter[0]
             duplicate_letter = letter
             
@@ -28,25 +36,39 @@ def encode(string):
         letter_count += str(len(duplicate_letter)) + duplicate_letter[0]   
     else:
         letter_count.append(duplicate_letter)
-    # import pdb; pdb.set_trace()
-            
+    
     return "".join(letter_count) 
 
-print(encode("WWWB"))
+
 
 
 def decode(string):
-    return "".join([int(letter) * letter for letter in string if letter in digits])
+    string = valid_string(string)
 
+    update_string = []
+    for letter in string:
+        # import pdb; pdb.set_trace()
+        if letter in digits:
+            update_string.append(int(letter))
+        else:
+            update_string.append(letter)
+   
+    new = []
+    for i, item in enumerate(update_string):
+        if item == isinstance(item, int):
+    
+            new.append(item * update_string[i+1:i+2])
+    
+        # new.append(item)
+        
+    print(new)
+    # return "".join(update_string)
 
-# def valid_string(string):
-#     new_string = ''
-#     for character in string.split(" "):
-#         if character.isalpha():
-#             new_string += character.upper()
-#         else:
-#             new_string += character
-#     return new_string
+    # return "".join([int(letter) * letter for letter in string if letter in digits])
+
+print(decode("3W"))
+
+# "WWWBWWWCBB"
     
     
 # print(valid_string(""))
