@@ -19,15 +19,21 @@ def encode(string):
         if duplicate_letter == '' or letter in duplicate_letter:
             duplicate_letter += letter
         
-        else:
+        if letter not in duplicate_letter:
+            # import pdb; pdb.set_trace()
             letter_count += str(len(duplicate_letter)) + duplicate_letter[0]
             duplicate_letter = letter
             
-    letter_count.append(letter)   
+    if len(duplicate_letter) > 1:
+        letter_count += str(len(duplicate_letter)) + duplicate_letter[0]   
+    else:
+        letter_count.append(duplicate_letter)
     # import pdb; pdb.set_trace()
             
     return "".join(letter_count) 
-  
+
+print(encode("WWWB"))
+
 
 def decode(string):
     return "".join([int(letter) * letter for letter in string if letter in digits])
@@ -45,4 +51,3 @@ def decode(string):
     
 # print(valid_string(""))
 
-print(encode("WWWBBB"))
