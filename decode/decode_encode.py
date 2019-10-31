@@ -40,29 +40,28 @@ def encode(string):
     return "".join(letter_count) 
 
 
-
-
 def decode(string):
     string = valid_string(string)
 
     update_string = []
     for letter in string:
-        # import pdb; pdb.set_trace()
         if letter in digits:
             update_string.append(int(letter))
         else:
             update_string.append(letter)
-   
-    new = []
-    for i, item in enumerate(update_string):
-        if item == isinstance(item, int):
     
-            new.append(item * update_string[i+1:i+2])
+    for i, item in enumerate(update_string):
+        if isinstance(item, int):
+            print(item * update_string[i+1])
+
+    # new = []
+    # for i, item in enumerate(update_string):
+    #     if item == isinstance(item, int):
+    #         new.append(item * update_string[i+1:i+2])
     
         # new.append(item)
         
-    print(new)
-    # return "".join(update_string)
+     # return "".join(update_string)
 
     # return "".join([int(letter) * letter for letter in string if letter in digits])
 
