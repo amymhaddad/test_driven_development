@@ -1,24 +1,23 @@
 from robot_name import Robot
 
-import pytest
+import pytest, re
+
 
 @pytest.fixture
 def robot():
-     return Robot()
+    return Robot()
 
 
-def test_robots_have_different_names():
-    robot1 = Robot()
+def test_robots_have_different_names(robot):
     robot2 = Robot()
-    assert robot1.name != robot2.name
+    assert robot.name != robot2.name
 
 
 def test_reset_name_to_different_name(robot):
     original_name = robot.name
-    robot.reset()
-    assert original_name != robot.name
+    assert original_name != robot.reset()
 
 
-def test_length_robot_name():
-    robot = Robot()
-    assert len(robot.name) == 5
+def test_robot_name_contains_correct_values(robot):
+    result = re.match(r"\D{2}\d{3}", robot.name)
+    assert result.group() == robot.name
