@@ -5,3 +5,7 @@ def test_rotate_by_0():
 
 def test_rotate_by_5():
     assert rotate('omg', 5) == 'trl'
+
+def test_rotate_by_26():
+    assert rotate('cool', 26) == 'cool'
+
