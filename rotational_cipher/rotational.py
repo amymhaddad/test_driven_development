@@ -12,14 +12,10 @@ def rotate(string, key):
             if outer_letter == " " or outer_letter in punctuation:
                 new += outer_letter
             for i, inner_letter in enumerate(letters):
-                shift_value = (i + key) %26
+                shift_value = (i + key) % 26
                 if inner_letter == outer_letter.lower():
                     if outer_letter.isupper():
                         new += letters[shift_value].capitalize()
                     else:
-                        new += letters[shift_value]    
-                
+                        new += letters[shift_value]   
         return new
-
-# print(rotate('The quick brown fox jumps over the lazy dog.', 13))
-
