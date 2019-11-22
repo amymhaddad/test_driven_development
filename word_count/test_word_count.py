@@ -45,7 +45,7 @@ def test_words_with_punctuation():
 
 def test_words_with_apostrophes():
     assert word_count("I'm going to move to Florida.") == {
-        "im": 1,
+        "i'm": 2,
         "going": 1,
         "to": 2,
         "move": 1,
@@ -58,7 +58,8 @@ def test_hyphenated_words():
         "that": 1,
         "medicine": 1,
         "is": 1,
-        "fastacting": 1,
+        "fast": 1,
+        "acting": 1,
     }
 
 
