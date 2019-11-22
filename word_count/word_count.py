@@ -1,4 +1,5 @@
 from string import punctuation, digits
+import re
 
 
 def word_count(phrase):
@@ -22,16 +23,19 @@ def word_count(phrase):
 def validate_phrase(phrase):
     """Remove punctuation and digits; lowercase all words"""
 
+    punct = re.sub('\W', " ", phrase)
+
+
     updated_phrase = []
     for words in phrase.lower().split(" "):
-
         if words.isalpha():
             updated_phrase.append(words)
         elif words.isdigit():
             continue
-
     
-    return updated_phrase
+   
+
+    return " ".join(updated_phrase)
 
         # if words in punctuation:
         #     print(words)
@@ -42,6 +46,7 @@ def validate_phrase(phrase):
         #     updated_phrase += words + " "
     # return updated_phrase
 
-phrase = "I am 12 years old."
 
+phrase = "That medicine is fast-acting."
+# # 
 print(validate_phrase(phrase))
