@@ -57,11 +57,14 @@ def test_hyphenated_words():
     assert word_count("That medicine is fast-acting.") == {
         "that": 1,
         "medicine": 1,
-        "is": 1,
+        "is": 1,    
         "fast": 1,
         "acting": 1,
     }
 
 
-def test_phase_with_numbers():
-    assert word_count("I am 12 years old.") == {"i": 1, "am": 1, "years": 1, "old": 1}
+# def test_phase_with_numbers():
+#     assert word_count("I am 12 years old.") == {"i": 1, "am": 1, "years": 1, "old": 1}
+
+def test_phrase_with_spaces():
+    assert word_count("I    like spaces   !") == {"i": 1, "like": 1, "spaces": 1}
