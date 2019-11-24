@@ -1,4 +1,4 @@
-from string import digits 
+from string import digits, punctuation
 import re
 
 
@@ -21,22 +21,26 @@ def word_count(phrase):
 
 def validate_phrase(phrase):
     """Remove punctuation and digits; lowercase all words"""
-
+    
+    
+   
     updated_phrase = []
+    
     for words in phrase.lower().split(" "):
-        if "\'" in words:
+        space = re.match(r'\s+', words)
+        
+        if space:
+            # updated_phrase.append(re.sub("[\s+]", "", words))
+            continue
+        elif "\'" in words:
             updated_phrase.append(words)
-        # elif words.isdigit():
-        #     continue
+        elif words in digits or words in punctuation:
+            updated_phrase.append(re.sub("[\W\d]", " ", words))  
         else:
-            # spaces = re.sub("[\s]", "", words)
-            
-            updated_phrase.append(re.sub("[\W\d]", " ", words).strip())
+            updated_phrase.append(words)
     return " ".join(updated_phrase) 
 
 
-phrase = "I    like spaces 12  !"
+phrase = " like spaces 12     !"
 # # # # 
-print(word_count(phrase))
-
-#why doesn't the re.sub("[\W\d\s]", " ", words).strip()) catch the spaces? Even if I create a separate variable to catch the spaces, it's not catchign but it works in pythex.
+print(validate_phrase(phrase))
