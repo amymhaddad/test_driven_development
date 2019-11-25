@@ -43,6 +43,7 @@ def test_words_with_punctuation():
     }
 
 
+
 def test_words_with_apostrophes():
     assert word_count("I'm going to move to Florida.") == {
         "i'm": 2,
