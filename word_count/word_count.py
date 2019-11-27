@@ -21,24 +21,22 @@ def word_count(phrase):
 
 def validate_phrase(phrase):
     """Remove punctuation and digits; lowercase all words"""
-    # space = re.search(r'\s+', words)
-    # updated_phrase.append(re.sub("[\s*]", "", words).strip())
+
+    remove_spaces_hyphens = re.sub(r'(\s{2,}|\-{1,})', " ", phrase.lower())   
     
-    updated_phrase = []
+    update = [re.sub(r'[\d*\W*]', "", word) for word in remove_spaces_hyphens.split(" ")]
+    # for word in remove_spaces_hyphens.split(" "):
+    #     update.append(re.sub(r'[\d*\W*]', "", word))
+
+    try:
+        update.remove("")
+        return " ".join(update)
+    except ValueError:
+        return " ".join(update)
     
-    for words in phrase.lower().split(" "):
-        # import pdb; pdb.set_trace()
-
-        #Not catching spaces, nor is words.isspace(), nor does '\s*'
-        if words == " ":
-            continue
-        elif "\'" in words or words.isalpha():
-            updated_phrase.append(words)
-        else:
-            updated_phrase.append(re.sub("[\W*\d*]", " ", words).strip())
-        
-    return " ".join(updated_phrase) 
 
 
-phrase = "I    like spaces   !."
-print(word_count(phrase))
+# phrase = "like.! I    like.! spaces and fast-acting 12!"
+# print(word_count(phrase))
+
+# i like spaces
